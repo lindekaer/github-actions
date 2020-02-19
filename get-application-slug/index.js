@@ -2,8 +2,7 @@ const core = require('@actions/core')
 const github = require('@actions/github')
 
 try {
-  const id = core.getInput('id')
-  core.setOutput('slug', `application-${id}`)
+  core.setOutput('slug', `application-${github.context.payload.number}`)
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`)
 } catch (error) {

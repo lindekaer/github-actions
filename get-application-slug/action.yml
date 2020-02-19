@@ -1,8 +1,4 @@
 name: 'Get application slug'
-inputs:
-  id:
-    description: 'A unique identifier for the application'
-    required: true
 outputs:
   slug:
     description: 'The slug for the application'
