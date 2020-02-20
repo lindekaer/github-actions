@@ -7,7 +7,10 @@ async function run() {
 
   const token = core.getInput('token')
   const repo = core.getInput('repo')
-  const info = core.getInput('info')
+  let info = core.getInput('info')
+
+  info = info.slice(2, info.length)
+  const [appName, region, url, , deployedAt] = info.split(' ')
 
   const octokit = new github.GitHub(token)
 
@@ -15,7 +18,10 @@ async function run() {
     core.setFailed('Only works with pull request events')
   }
 
-  const body = `hello ${info}`
+  const body = `URL:      ${url}
+APP:      ${appName}
+REGION:   ${region}
+DEPLOYED: ${deployedAt}`
 
   await octokit.issues.createComment({
     number: github.context.issue.number,
