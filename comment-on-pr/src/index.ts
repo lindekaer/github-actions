@@ -7,7 +7,7 @@ async function run() {
 
   const token = core.getInput('token')
   const repo = core.getInput('repo')
-  const applicationInfo = core.getInput('application-info')
+  const applicationInfo = core.getInput('applicationInfo')
 
   const octokit = new github.GitHub(token)
 

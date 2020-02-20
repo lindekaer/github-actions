@@ -1,0 +1,11 @@
+name: 'Comment on opened PR'
+outputs:
+  token:
+    description: 'Github access token'
+  repo:
+    description: 'Github repository'
+  applicationInfo:
+    description: 'Data for message content'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
