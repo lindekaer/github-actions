@@ -4139,11 +4139,11 @@ const core = __webpack_require__(470);
 const github = __webpack_require__(469);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        const payload = JSON.stringify(github.context.payload, undefined, 2);
-        console.log(`The event payload: ${payload}`);
+        const context = JSON.stringify(github.context, undefined, 2);
+        console.log(context);
         const token = core.getInput('token');
         const repo = core.getInput('repo');
-        const applicationInfo = core.getInput('application-info');
+        const applicationInfo = core.getInput('applicationInfo');
         const octokit = new github.GitHub(token);
         if (github.context.eventName !== 'pull_request') {
             core.setFailed('Only works with pull request events');
