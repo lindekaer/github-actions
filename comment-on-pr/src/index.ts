@@ -18,10 +18,12 @@ async function run() {
     core.setFailed('Only works with pull request events')
   }
 
-  const body = `\`\`\`URL:      ${url}
+  const logs = `URL:      ${url}
 APP:      ${appName}
 REGION:   ${region}
-DEPLOYED: ${deployedAt}\`\`\``
+DEPLOYED: ${deployedAt}`
+
+  const body = `###Deployed! 🚀 \`\`\`${logs}\`\`\``
 
   await octokit.issues.createComment({
     number: github.context.issue.number,
