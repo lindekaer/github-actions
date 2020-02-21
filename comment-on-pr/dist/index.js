@@ -4150,11 +4150,16 @@ function run() {
         if (github.context.eventName !== 'pull_request') {
             core.setFailed('Only works with pull request events');
         }
-        const logs = `URL:      ${url}
-APP:      ${appName}
+        const logs = `APP:      ${appName}
 REGION:   ${region}
-DEPLOYED: ${deployedAt}`;
-        const body = `###Deployed! 🚀 \`\`\`${logs}\`\`\``;
+DEPLOYED: ${deployedAt}
+OWNER:    ${github.context.actor}`;
+        const body = `#### Deployment successful! 🚀
+Preview application on [${url}](${url})
+\`\`\`
+${logs}
+\`\`\`
+`;
         yield octokit.issues.createComment({
             number: github.context.issue.number,
             owner: github.context.actor,
